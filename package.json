@@ -1,0 +1,47 @@
+{
+  "name": "light-icons",
+  "version": "1.0.1",
+  "description": "Handpicked collection of premium & lightwighted icons as font",
+  "author": "Pulkit <pulkit.cloud@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plug-ui/light-icons.git"
+  },
+  "homepage": "https://lighticon.netlify.app/",
+  "scripts": {
+    "release": "release-it --no-git.requireCleanWorkingDir",
+    "font": "node script/build.js",
+    "build": "npm run font",
+    "trace": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
+  },
+  "keywords": [
+    "svg",
+    "icon",
+    "react",
+    "font",
+    "webfont",
+    "icon",
+    "iconfont",
+    "font-face",
+    "compress",
+    "minify",
+    "font-cli",
+    "otf",
+    "ttf",
+    "woff",
+    "eot",
+    "svg",
+    "ttf2eot",
+    "ttf2woff",
+    "ttf2svg",
+    "svg2ttf",
+    "css",
+    "base64"
+  ],
+  "devDependencies": {
+    "loading-cli": "1.1.0",
+    "release-it": "12.6.3",
+    "svgtofont": "2.1.0"
+  },
+  "license": "MIT"
+}
