@@ -13,16 +13,17 @@ npm install light-icons --save
 // import in CSS files 
 @import "~light-icons/dist/light-icon.css";
 ```
+OR
 ```js
 // import directly in JS files 
 import "light-icons/dist/light-icon.css";
 ```
 
+## How to use
+Add `light-icon-*` class, either in `i` or `span` HTML Tag
 ```html
 <i class="light-icon-facebook"></i>
 ```
-
-Or use the `Unicode`, You can use to easily find the `Unicode` icon you want to use. 
 
 
 ## License
