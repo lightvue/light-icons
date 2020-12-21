@@ -1,14 +1,19 @@
 const path = require("path");
 const svgtofont = require("svgtofont");
 const pkg = require('../package.json');
+const fs = require("fs");
+
+const srcPath = path.resolve(process.cwd(), "svg-light"); // svg path
+const distPath = path.resolve(process.cwd(), "dist"); // output path
+const fontName = "light-icon"; // font name
 
 svgtofont({
-  src: path.resolve(process.cwd(), "svg-light"), // svg path
-  dist: path.resolve(process.cwd(), "dist"), // output path
+  src: srcPath,
+  dist: distPath,
   emptyDist: true,
   outSVGReact: false,
   outSVGPath: true,
-  fontName: "light-icon", // font name
+  fontName: fontName,
   css: true, // Create CSS files.
   startNumber: 20000, // unicode start number
   nodemo: true, // no demo html files
@@ -50,6 +55,29 @@ svgtofont({
     `
   }
 })
-.then(() => {
+.then(async () => {
   console.log("DONE!");
+  await generateJSON();
 });
+
+
+async function generateJSON() {
+  let files = fs.readdirSync(srcPath, 'utf-8');
+  let svgArr = [];
+  if (!files) {
+    throw new Error(`Error! Svg folder is empty.${srcPath}`);
+  }
+
+  for (let i in files) {
+    if (typeof files[i] !== 'string' || path.extname(files[i]) !== '.svg') continue;
+    if (!~svgArr.indexOf(files[i])) {
+      svgArr.push( `"${path.parse(files[i]).name}"` );
+    }
+  }
+  const outPath = path.join(distPath, `${fontName}_list.json`);
+  await fs.writeFile(outPath, `[${svgArr}]`, function (err) {
+    if (err) throw err;
+    console.log('JSON Saved!');
+  });
+  return;
+}
