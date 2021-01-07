@@ -7,9 +7,9 @@
       </div>
     </div>
     <ul>
-      <li class="class-icon" v-for="classes in filteredItems" :key="classes">
-        <i :class="`light-icon-${classes}`"></i>
-        <p class="name">{{ classes }}</p>
+      <li v-for="iconName in filteredList" :key="iconName">
+        <i :class="`light-icon-${iconName}`"></i>
+        <p class="name">{{ iconName }}</p>
       </li>
     </ul>
     <div class="footer">
@@ -25,14 +25,13 @@ export default {
     return {
       apiPath: '/light-icon_list.json',
       query: '',
-      className: [],
+      allIcons: [],
     }
   },
   computed: {
-    filteredItems: function () {
-      var self = this
-      return self.className.filter(function (val) {
-        return val.indexOf(self.query) !== -1
+    filteredList: function () {
+      return this.allIcons.filter( (val) => {
+        return val.indexOf(this.query) !== -1
       })
     },
   },
@@ -42,16 +41,13 @@ export default {
     }
   },
   methods: {
-    fontName() {
-      return
-    },
     async fetchAPI() {
       fetch(`${this.apiPath}`)
-        .then((_) => {
+        .then( _ => {
           return _.json()
         })
-        .then((_) => {
-          this.className = _
+        .then( response => {
+          this.allIcons = response
         })
     },
     async copy(text) {
@@ -87,7 +83,7 @@ export default {
 }
 .icons ul li {
   vertical-align: top;
-  width: 120px;
+  width: 150px;
   box-sizing: border-box;
   text-align: center;
   background-color: #fff;
@@ -169,8 +165,5 @@ input {
     position: relative;
     width: 250px;
   }
-  // .search-container{
-  //   position: relative;
-  // }
 }
 </style>
