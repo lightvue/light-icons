@@ -1,21 +1,21 @@
 <template>
   <div class="icons">
-       <div class="search-container">
-        <div class="search">
-            <input 
-            placeholder="Search Icons"
-               v-model="query"
-                type="text">
-            <i class='light-icon-search search-icon'></i>
-        </div>
+    <div class="search-container">
+      <div class="search">
+        <input placeholder="Search Icons" v-model="query" type="text" />
+        <i class="light-icon-search search-icon"></i>
+      </div>
     </div>
     <ul>
       <li class="class-icon" v-for="classes in filteredItems" :key="classes">
         <i :class="`light-icon-${classes}`"></i>
-        <p class="name">{{classes}}</p>
+        <p class="name">{{ classes }}</p>
       </li>
     </ul>
-    <div class="footer">Licensed under MIT. (Yes it's free and <a href="https://github.com/plug-ui">open-sourced</a>)</div>
+    <div class="footer">
+      Licensed under MIT. (Yes it's free and
+      <a href="https://github.com/plug-ui">open-sourced</a>)
+    </div>
   </div>
 </template>
 
@@ -24,18 +24,18 @@ export default {
   data() {
     return {
       apiPath: '/light-icon_list.json',
-      query:'',
+      query: '',
       className: [],
     }
   },
-  computed:{
-		filteredItems:function(){
-			var self=this;
-			return self.className.filter(function(val){
-				return val.indexOf(self.query)!== -1;
-			})
-		}
-	},
+  computed: {
+    filteredItems: function () {
+      var self = this
+      return self.className.filter(function (val) {
+        return val.indexOf(self.query) !== -1
+      })
+    },
+  },
   created() {
     if (this.apiPath) {
       this.fetchAPI()
@@ -57,12 +57,12 @@ export default {
     async copy(text) {
       copyToClipboard(text)
         .then(() => {
-          this.copied = true;
-          clearTimeout(this.timer);
+          this.copied = true
+          clearTimeout(this.timer)
           setTimeout(() => {
-            this.copied = false;
-            this.timer = null;
-          }, 1000);
+            this.copied = false
+            this.timer = null
+          }, 1000)
         })
         .catch(() => {})
     },
@@ -111,70 +111,64 @@ i {
 }
 /* Search Bar */
 input {
+  outline: none;
+  &:focus {
     outline: none;
-    &:focus {
-        outline: none;
-    }
+  }
 }
-    .search-container {
-        position: relative;
-        width: 400px;
-        margin: auto;
-        padding: 40px;
-    }
-    .focus .content-results {
-        opacity: 1;
-        visibility: visible;
-        transform: translate(0, 0);
-    }
-    .search {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 100;
-    }
-    .search i {
-        position: absolute;
-        right: 50px;
-        font-size: 1.5rem;
-        transition: all .25s ease;
-        opacity: .5;
-    }
-    
-   
-    
-    
-
-    .search input {
-        width: 100%;
-        padding: 15px 40px 15px 20px;
-        box-sizing: border-box;
-        border: 0px;
-        border-radius: 20px;
-        transition: all .25s ease;
-    }
-    .search input:focus {
-        transform: translate(0, -6px);
-        box-shadow: 0px 10px 20px 0px rgba(0,0,0,.05);
-    }
-    .search input:focus ~ i {
-        transform: translate(0, -6px);
-        opacity: 1;
-    }
-    .footer {
+.search-container {
+  position: relative;
+  width: 400px;
+  margin: auto;
+  padding: 40px;
+}
+.focus .content-results {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0);
+}
+.search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.search i {
+  position: absolute;
+  right: 50px;
+  font-size: 1.5rem;
+  transition: all 0.25s ease;
+  opacity: 0.5;
+}
+.search input {
+  width: 100%;
+  padding: 15px 40px 15px 20px;
+  box-sizing: border-box;
+  border: 0px;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+}
+.search input:focus {
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
+}
+.search input:focus ~ i {
+  opacity: 1;
+}
+.footer {
+  text-align: center;
+  padding: 90px 0 10px 0;
+  a {
     text-align: center;
-    padding: 90px 0 10px 0;
-    a {
-      text-align: center;
     padding: 10px 0 90px 0;
     color: #696969;
-    }
+  }
 }
 @media only screen and (max-width: 400px) {
   .search-container {
-        position: relative;
-        width: 250px;}
+    position: relative;
+    width: 250px;
+  }
   // .search-container{
   //   position: relative;
   // }
