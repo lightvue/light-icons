@@ -4,10 +4,10 @@
   </div>
 </template>
 <script>
-import "../../dist/light-icon.css";
+import "../../../dist/light-icon.css";
 
 export default {
-  
+
 }
 </script>
 <style>

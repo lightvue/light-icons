@@ -11,8 +11,10 @@
   "scripts": {
     "release": "release-it --no-git.requireCleanWorkingDir",
     "font": "node script/build.js",
+    "dev": "cd docs && npm run dev",
     "build": "npm run font",
-    "trace": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
+    "trace": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
+    "postinstall": "cd docs && npm install"
   },
   "keywords": [
     "svg",

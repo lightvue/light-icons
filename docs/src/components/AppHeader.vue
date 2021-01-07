@@ -5,7 +5,7 @@
           <h1>LIGHT ICON<sup>1.0.2</sup></h1>
           <div class="info">Handpicked collection of premium &amp; lightwighted icons as font</div>
       </div>
-   
+
   </header>
 </template>
 
@@ -21,7 +21,7 @@ export default {
     padding: 0;
     box-sizing: border-box;
 }
-header { 
+header {
     color: #566d79;
     text-align: center;
     background-color: #f5f8fa;
@@ -41,7 +41,7 @@ header {
     sup {
            font-size: 14px;
     margin: 8px 0 0 8px;
-    position: absolute; 
+    position: absolute;
         vertical-align: super;
     }
 }
