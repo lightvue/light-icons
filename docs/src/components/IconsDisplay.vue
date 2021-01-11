@@ -94,6 +94,7 @@ export default {
   margin: auto;
   padding: 40px 0;
   background: #F5F8FA;
+  z-index: 10;
 }
 .icons__search-bar {
   position: relative;
