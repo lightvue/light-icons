@@ -1,32 +1,20 @@
 <template>
-  <div class="wrapper">
-      <app-header/>
-        <documentation />
-        <logo-display />
-          <div class="container">
-              <div class="get-started">
-
-              </div>
-          </div>
-      </div>
+  <docs-page-layout :title="$options.title" :description="$options.description">
+      <installation />
+      <template #icons> 
+    <icons />
+      </template>
+  </docs-page-layout>
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader'
-import Documentation from '../components/Documentation.vue'
-import LogoDisplay from '../components/LogoDisplay.vue'
+import DocsPageLayout from '../collections/docs-card/DocsPageLayout.vue'
+import Icons from '../examples/Icons'
+import Installation from '../examples/Installation'
+
 export default {
-  components: {
-    AppHeader,
-    Documentation,
-    LogoDisplay
-    }
-    }
+  components: { DocsPageLayout, Installation, Icons,},
+}
 </script>
 
-<style>
-.wrapper {
-    background:#F5F8FA ;
-    padding:100px 0 ;
-}
-</style>
+<style></style>
