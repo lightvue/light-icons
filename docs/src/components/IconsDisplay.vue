@@ -13,7 +13,8 @@
     </div>
     <ul class="icons__list">
       <li @click="copyIconTag(iconName)"
-        class="icons__list-items"
+        class="icons__list-item"
+        :class="{'--copied': copiedIcon === iconName}"
         v-for="iconName in filteredList"
         :key="iconName"
       >
@@ -40,6 +41,7 @@ export default {
       apiPath: '/light-icon_list.json',
       query: '',
       allIcons: [],
+      copiedIcon: ''
     }
   },
   computed: {
@@ -67,14 +69,16 @@ export default {
     },
      copyIconTag(iconName) {
       const text = `<i class="light-icon-${iconName}"></i>`
+      this.copiedIcon = iconName;
       copyToClipboard(text)
         .then(() => {
           // this.copied = true;
-          // clearTimeout(this.timer);
-          // this.timer = setTimeout(() => {
-          //   this.copied = false;
-          //   this.timer = null;
-          // }, 1000);
+          clearTimeout(this.timer);
+          setTimeout(() => {
+            // this.copied = false;
+            this.copiedIcon = '';
+            // this.timer = null;
+          }, 2000);
         })
         .catch(() => {});
     },
@@ -135,7 +139,7 @@ export default {
   justify-content: center;
   list-style: none;
 }
-.icons__list .icons__list-items {
+.icons__list .icons__list-item {
   vertical-align: top;
   width: 150px;
   box-sizing: border-box;
@@ -148,12 +152,27 @@ export default {
   margin: 8px;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
   &:hover {
     background-color: #607c8a;
     color: #fff;
   }
   i {
     font-size: 50px;
+  }
+  &.--copied::after{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    content: 'Icon Copied';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #607c8a;
+    color: #ffffff;
+    border-radius: 12px;
   }
 }
 
