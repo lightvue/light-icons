@@ -12,8 +12,7 @@
       </div>
     </div>
     <ul class="icons__list">
-      <li @click="copy"
-      :text="`<i class='light-icon-${iconName}'></i>`"
+      <li @click="copyIconTag(iconName)"
         class="icons__list-items"
         v-for="iconName in filteredList"
         :key="iconName"
@@ -35,12 +34,7 @@
 
 <script>
 import { copyToClipboard } from "@/utils";
-import CopyButton from '../collections/docs-card/CopyButton.vue'
 export default {
-  components: { CopyButton },
-  props: {
-    text: [Function, String],
-  },
   data() {
     return {
       apiPath: '/light-icon_list.json',
@@ -61,7 +55,7 @@ export default {
     }
   },
   methods: {
-    
+
     async fetchAPI() {
       fetch(`${this.apiPath}`)
         .then((_) => {
@@ -71,16 +65,16 @@ export default {
           this.allIcons = response
         })
     },
-     copy() {
-      const text = typeof this.text === "function" ? this.text() : this.text;
+     copyIconTag(iconName) {
+      const text = `<i class="light-icon-${iconName}"></i>`
       copyToClipboard(text)
         .then(() => {
-          this.copied = true;
-          clearTimeout(this.timer);
-          this.timer = setTimeout(() => {
-            this.copied = false;
-            this.timer = null;
-          }, 1000);
+          // this.copied = true;
+          // clearTimeout(this.timer);
+          // this.timer = setTimeout(() => {
+          //   this.copied = false;
+          //   this.timer = null;
+          // }, 1000);
         })
         .catch(() => {});
     },
