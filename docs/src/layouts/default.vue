@@ -1,26 +1,27 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="docs-page">
+    <div class="content-wrapper">
+      <app-header />
+      <app-navbar />
+      <Nuxt />
+      <app-footer />
+    </div>
   </div>
 </template>
 <script>
-import "../../../dist/light-icon.css";
+import '../../../dist/light-icon.css'
+import AppFooter from '@/components/common/AppFooter.vue'
+import AppHeader from '@/components/common/AppHeader.vue'
+import AppNavbar from '@/components/common/AppNavbar.vue'
 
 export default {
-
+  components: { AppFooter, AppHeader, AppNavbar },
 }
 </script>
 <style>
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -28,6 +29,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  color: #566d79;
+}
+
+a {
+  color: #566d79;
 }
 
 *,
@@ -35,34 +41,16 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.docs-page {
+  background: #f5f8fa;
+  padding: 100px 0 0;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.content-wrapper {
+  max-width: 1180px;
+  margin: auto;
+  padding: 30px;
 }
 </style>
