@@ -1,5 +1,5 @@
 <template>
-  <documentation />
+  <documentation/>
 </template>
 
 <script>

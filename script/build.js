@@ -1,11 +1,12 @@
-const path = require("path");
-const svgtofont = require("svgtofont");
+const path = require('path');
+const svgtofont = require('svgtofont');
 const pkg = require('../package.json');
-const fs = require("fs");
+const fs = require('fs');
 
-const srcPath = path.resolve(process.cwd(), "svg-light"); // svg path
-const distPath = path.resolve(process.cwd(), "dist"); // output path
-const fontName = "light-icon"; // font name
+const srcPath = path.resolve(process.cwd(), 'svg-light'); // svg path
+const distPath = path.resolve(process.cwd(), 'dist'); // output path
+const docsStaticPath = path.resolve(process.cwd(), 'docs/src/static');
+const fontName = 'light-icon'; // font name
 
 svgtofont({
   src: srcPath,
@@ -19,19 +20,18 @@ svgtofont({
   nodemo: true, // no demo html files
   svgicons2svgfont: {
     fontHeight: 1000,
-    normalize: true
+    normalize: true,
   },
   website: {
-    template: path.resolve(process.cwd(), "assets", "demo-template.ejs"),
-    title: "LIGHT ICON",
+    template: path.resolve(process.cwd(), 'assets', 'demo-template.ejs'),
+    title: 'LIGHT ICON',
     // Must be a .svg format image.
-    favicon: path.resolve(process.cwd(), "assets", "favicon.png"),
-    logo: path.resolve(process.cwd(), "assets", "logo.svg"),
+    favicon: path.resolve(process.cwd(), 'assets', 'favicon.png'),
+    logo: path.resolve(process.cwd(), 'assets', 'logo.svg'),
     version: pkg.version,
     meta: {
-      description: "Handpicked collection of premium & lightwighted icons as font",
-      keywords:
-        "light, light-vue, vue.js, vue, component, svg, icon, components, ui, framework, toolkit,icon,file-icons,TTF,EOT,WOFF,WOFF2,SVG"
+      description: 'Handpicked collection of premium & lightwighted icons as font',
+      keywords: 'light, light-vue, vue.js, vue, component, svg, icon, components, ui, framework, toolkit,icon,file-icons,TTF,EOT,WOFF,WOFF2,SVG',
     },
     description: `
       Handpicked collection of premium & lightwighted icons as font
@@ -52,14 +52,12 @@ svgtofont({
     // ],
     footerInfo: `
       Licensed under MIT. (Yes it's free and <a href="https://github.com/plug-ui">open-sourced</a>)
-    `
-  }
-})
-.then(async () => {
-  console.log("DONE!");
+    `,
+  },
+}).then(async () => {
+  console.log('DONE!');
   await generateJSON();
 });
-
 
 async function generateJSON() {
   let files = fs.readdirSync(srcPath, 'utf-8');
@@ -71,13 +69,19 @@ async function generateJSON() {
   for (let i in files) {
     if (typeof files[i] !== 'string' || path.extname(files[i]) !== '.svg') continue;
     if (!~svgArr.indexOf(files[i])) {
-      svgArr.push( `"${path.parse(files[i]).name}"` );
+      svgArr.push(`"${path.parse(files[i]).name}"`);
     }
   }
   const outPath = path.join(distPath, `${fontName}_list.json`);
   await fs.writeFile(outPath, `[${svgArr}]`, function (err) {
     if (err) throw err;
     console.log('JSON Saved!');
+  });
+
+  const docsOutPath = path.join(docsStaticPath, `icon-list.json`);
+  await fs.writeFile(docsOutPath, `[${svgArr}]`, function (err) {
+    if (err) throw err;
+    console.log('JSON for docs saved!');
   });
   return;
 }

@@ -1,10 +1,24 @@
 <template>
-  <div class="icons__wrap">
-    <div class="icons__search-row">
+  <div class="icons__wrap" style="min-height: 90vh">
+    <br /><br />
+    <div class="icons__search-row" ref="searchRow">
       <div class="icons__search-bar">
         <input
           class="icons__search-input"
-          placeholder="Search Icons"
+          placeholder="Search Icon"
+          v-model="query"
+          type="text"
+        />
+        <i class="light-icon-search search-icon"></i>
+      </div>
+    </div>
+
+    <br /><br />
+    <div class="icons__search-row --sticky" v-if="stickySearchBar">
+      <div class="icons__search-bar">
+        <input
+          class="icons__search-input"
+          placeholder="Search Icon"
           v-model="query"
           type="text"
         />
@@ -12,36 +26,30 @@
       </div>
     </div>
     <ul class="icons__list">
-      <li @click="copyIconTag(iconName)"
+      <li
+        @click="copyIconTag(iconName)"
         class="icons__list-item"
-        :class="{'--copied': copiedIcon === iconName}"
+        :class="{ '--copied': copiedIcon === iconName }"
         v-for="iconName in filteredList"
         :key="iconName"
       >
         <i :class="`light-icon-${iconName}`"></i>
         <p class="icons__list-item-name">{{ iconName }}</p>
       </li>
-      <transition
-      enter-active-class="animated fadeIn"
-      leave-active-class="animated fadeOut"
-    >
-      <div class="copy-btn-tag" v-show="copied">
-        <i class="light-icon-circle-check" /> Copied to clipboard
-      </div>
-    </transition>
     </ul>
   </div>
 </template>
 
 <script>
-import { copyToClipboard } from "@/utils";
+import { copyToClipboard } from '@/utils'
 export default {
   data() {
     return {
-      apiPath: '/light-icon_list.json',
+      apiPath: '/icon-list.json',
       query: '',
       allIcons: [],
-      copiedIcon: ''
+      copiedIcon: '',
+      stickySearchBar: false,
     }
   },
   computed: {
@@ -51,13 +59,18 @@ export default {
       })
     },
   },
+  mounted() {
+    document.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed() {
+    document.removeEventListener('scroll', this.handleScroll)
+  },
   created() {
     if (this.apiPath) {
       this.fetchAPI()
     }
   },
   methods: {
-
     async fetchAPI() {
       fetch(`${this.apiPath}`)
         .then((_) => {
@@ -67,39 +80,50 @@ export default {
           this.allIcons = response
         })
     },
-     copyIconTag(iconName) {
+    copyIconTag(iconName) {
       const text = `<i class="light-icon-${iconName}"></i>`
-      this.copiedIcon = iconName;
+      this.copiedIcon = iconName
       copyToClipboard(text)
         .then(() => {
           // this.copied = true;
-          clearTimeout(this.timer);
+          clearTimeout(this.timer)
           setTimeout(() => {
             // this.copied = false;
-            this.copiedIcon = '';
+            this.copiedIcon = ''
             // this.timer = null;
-          }, 2000);
+          }, 2000)
         })
-        .catch(() => {});
+        .catch(() => {})
     },
-
+    handleScroll(event) {
+      this.stickySearchBar =
+        window.top.scrollY > this.$refs.searchRow.offsetTop ? true : false
+    },
   },
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .icons__search-row {
-  position: sticky;
+  position: relative;
   top: 0px;
-  margin: auto;
-  padding: 40px 0;
-  background: #F5F8FA;
+  // margin: px -30px;
+  padding: 16px 0;
+  background: #f5f8fa;
   z-index: 10;
+  &.--sticky {
+    box-shadow: -4px 4px 25px -4px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 101;
+  }
 }
 .icons__search-bar {
   position: relative;
   margin: 0 auto;
-  width: 360px;
+  max-width: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,26 +166,30 @@ export default {
 }
 .icons__list .icons__list-item {
   vertical-align: top;
-  width: 150px;
+
+  width: 144px;
+  max-width: 120px;
+  min-width: 100px;
   box-sizing: border-box;
   text-align: center;
   background-color: #fff;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  padding: 10px 0 10px 0;
+  padding: 8px;
   margin: 8px;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  flex: 1 1 0;
   &:hover {
     background-color: #607c8a;
     color: #fff;
   }
   i {
-    font-size: 50px;
+    font-size: 36px;
   }
-  &.--copied::after{
+  &.--copied::after {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -176,14 +204,8 @@ export default {
     border-radius: 12px;
   }
 }
-
-.icons__list-item-name {
-  margin: 0 0 10px 0 !important;
-}
-
 @media only screen and (max-width: 400px) {
-  .icons__search-row {
-    width: 250px;
+  .icons__list-item {
   }
 }
 </style>
