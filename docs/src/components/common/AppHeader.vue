@@ -31,7 +31,7 @@
 <script>
 export default {
   created() {
-    const pkg = require('../../../package.json')
+    const pkg = require('../../../../package.json')
     this.currentVersion = pkg.version
   },
   data() {
