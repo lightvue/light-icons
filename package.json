@@ -1,11 +1,11 @@
 {
-  "name": "light-icons",
+  "name": "@lightvue/light-icons",
   "version": "1.0.5",
   "description": "Handpicked collection of premium & lightwighted icons as font",
   "author": "Pulkit Aggarwal <pulkit.cloud@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lightvue/light-icons.git"
+    "url": "git://github.com/lightvue/light-icons.git"
   },
   "homepage": "https://icons.lightvue.org/",
   "scripts": {
@@ -16,6 +16,9 @@
     "build-docs": "cd docs && npm install && npm run build && npm run generate",
     "trace": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "postinstall": "cd docs && npm install"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   },
   "keywords": [
     "svg",
