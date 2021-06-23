@@ -15,7 +15,9 @@ svgtofont({
   outSVGReact: false,
   outSVGPath: true,
   fontName: fontName,
-  css: true, // Create CSS files.
+  css: {
+    fontSize: 'inherit',
+  }, // Create CSS files.
   startNumber: 20000, // unicode start number
   nodemo: true, // no demo html files
   svgicons2svgfont: {
@@ -56,8 +58,24 @@ svgtofont({
   },
 }).then(async () => {
   console.log('DONE!');
+  await modifyCSS();
   await generateJSON();
 });
+
+async function modifyCSS() {
+  const cssFilePath = path.join(distPath, `${fontName}.css`);
+
+  fs.readFile(cssFilePath, 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    var result = data.replace(/font-size:16px;/g, 'font-size:inherit;\n  color:inherit;\n  vertical-align:middle;');
+    console.log('Modified CSS');
+    fs.writeFile(cssFilePath, result, 'utf8', function (err) {
+      if (err) return console.log(err);
+    });
+  });
+}
 
 async function generateJSON() {
   let files = fs.readdirSync(srcPath, 'utf-8');
