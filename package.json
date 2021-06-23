@@ -14,8 +14,7 @@
     "dev": "cd docs && npm run dev",
     "build": "npm run font",
     "build-docs": "cd docs && npm install && npm run build && npm run generate",
-    "trace": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
-    "postinstall": "cd docs && npm install"
+    "trace": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
   },
   "keywords": [
     "svg",
