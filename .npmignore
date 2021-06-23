@@ -6,6 +6,7 @@ svg-light
 script
 build
 assets
+docs
 
 .DS_Store
 .cache
