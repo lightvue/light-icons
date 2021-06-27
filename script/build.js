@@ -69,7 +69,7 @@ async function modifyCSS() {
     if (err) {
       return console.log(err);
     }
-    var result = data.replace(/font-size:16px;/g, 'font-size:inherit;\n  color:inherit;\n  vertical-align:middle;');
+    var result = data.replace(/font-size:16px;/g, 'font-size:inherit;\n  color:inherit;\n');
     console.log('Modified CSS');
     fs.writeFile(cssFilePath, result, 'utf8', function (err) {
       if (err) return console.log(err);
