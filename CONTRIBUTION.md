@@ -25,7 +25,7 @@
   - Provide convincing reason to add this feature. Ideally you should open a suggestion issue first and have it greenlighted before working on it
 
 
-## LightVue Sass Guidelines
+## Light-icons Sass Guidelines
 
 - Always on a separated file
 - Use .scss extension
