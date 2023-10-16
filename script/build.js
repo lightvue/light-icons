@@ -32,11 +32,11 @@ svgtofont({
     logo: path.resolve(process.cwd(), 'assets', 'logo.svg'),
     version: pkg.version,
     meta: {
-      description: 'Handpicked collection of premium & lightwighted icons as font',
+      description: 'Handpicked collection of premium & lightweight icons as font',
       keywords: 'light, light-vue, vue.js, vue, component, svg, icon, components, ui, framework, toolkit,icon,file-icons,TTF,EOT,WOFF,WOFF2,SVG',
     },
     description: `
-      Handpicked collection of premium & lightwighted icons as font
+      Handpicked collection of premium & lightweight icons as font
     `,
     // links: [
     //   {
