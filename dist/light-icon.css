@@ -1,11 +1,11 @@
 @font-face {
   font-family: "light-icon";
-  src: url('light-icon.eot?t=1697464542570'); /* IE9*/
-  src: url('light-icon.eot?t=1697464542570#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("light-icon.woff2?t=1697464542570") format("woff2"),
-  url("light-icon.woff?t=1697464542570") format("woff"),
-  url('light-icon.ttf?t=1697464542570') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('light-icon.svg?t=1697464542570#light-icon') format('svg'); /* iOS 4.1- */
+  src: url('light-icon.eot?t=1697568489232'); /* IE9*/
+  src: url('light-icon.eot?t=1697568489232#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("light-icon.woff2?t=1697568489232") format("woff2"),
+  url("light-icon.woff?t=1697568489232") format("woff"),
+  url('light-icon.ttf?t=1697568489232') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('light-icon.svg?t=1697568489232#light-icon') format('svg'); /* iOS 4.1- */
 }
 
 [class^="light-icon-"], [class*=" light-icon-"] {
@@ -156,7 +156,7 @@
 .light-icon-building-church:before { content: "\ea87"; }
 .light-icon-building-community:before { content: "\ea88"; }
 .light-icon-building-hospital:before { content: "\ea89"; }
-.light-icon-building-pavilon:before { content: "\ea8a"; }
+.light-icon-building-pavilion:before { content: "\ea8a"; }
 .light-icon-building-skyscraper:before { content: "\ea8b"; }
 .light-icon-building-store:before { content: "\ea8c"; }
 .light-icon-building-warehouse:before { content: "\ea8d"; }
@@ -422,13 +422,13 @@
 .light-icon-minimize:before { content: "\eb91"; }
 .light-icon-minus:before { content: "\eb92"; }
 .light-icon-mist:before { content: "\eb93"; }
-.light-icon-mood-confuzed:before { content: "\eb94"; }
+.light-icon-mood-confused:before { content: "\eb94"; }
 .light-icon-mood-happy:before { content: "\eb95"; }
 .light-icon-mood-kid:before { content: "\eb96"; }
 .light-icon-mood-neutral:before { content: "\eb97"; }
 .light-icon-mood-sad:before { content: "\eb98"; }
 .light-icon-mood-smile:before { content: "\eb99"; }
-.light-icon-mood-suprised:before { content: "\eb9a"; }
+.light-icon-mood-surprised:before { content: "\eb9a"; }
 .light-icon-mood-tongue:before { content: "\eb9b"; }
 .light-icon-moon:before { content: "\eb9c"; }
 .light-icon-mouse:before { content: "\eb9d"; }
