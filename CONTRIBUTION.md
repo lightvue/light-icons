@@ -1,28 +1,71 @@
-Plug Ui is hosted on Github, which is currently in version 1.0 with with vue/ Nuxt js.
-the actual SCSS Files are in the main folder and other DOCS files are in docs folder.
+# Light-icons Contribution Guide
+  
+  Thank you for CONTRIBUTING!
 
-## Getting Started:
+## Raising an Issue
 
-### clone repository
+- Make sure the issue hasn't been raised yet
+- The issue list of this repo is **exclusively** for Bug Reports and Feature Requests.
+- Bug reproductions should be as **concise** as possible.
+- **Search** for your issue, it _may_ have been answered.
+- Include **screenshots** or animated GIFs in your issue whenever needed (if visual issue)
+
+## Pull Requests
+
+- Always work on a new branch. Making changes on your fork's `dev` or `master` branch can cause problems. (See [The beginner's guide to contributing to a GitHub project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/))
+- The `master` branch is a snapshot of the latest release. **Submit your PR in the `dev` branch**
+- It's OK to have multiple small commits as you work on the PR - we will let GitHub automatically squash it before merging
+- Include **screenshots** or animated GIFs in your pull request whenever needed (if visual changes)
+- Bug fixes should be submitted to the `master` branch.
+- New features and breaking changes should be submitted to the `dev` branch.
+- Use a descriptive title no more than 64 characters long. This will be used as the commit message when your PR is merged.
+- For changes and feature requests, please include an example of what you are trying to solve and an example of the markup. It is preferred that you create an issue first however, as that will allow the team to review your proposal before you start.
+- Please reference the issue # that the PR resolves, something like `Fixes #1234` or `Resolves #6458` (See [closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/))
+- If adding new feature:
+  - Provide convincing reason to add this feature. Ideally you should open a suggestion issue first and have it greenlighted before working on it
+
+
+## Light-icons Sass Guidelines
+
+- Always on a separated file
+- Use .scss extension
+- Use **BEM** naming conventions
+- Use only **rem** or **em** for `padding`, `margin` and `font-size`
+
+## How to add icons
+
+- Navigate to svg-light folder in root
+- Add svg file to svg-light folder 
+- Then build project  ```npm run font```
+
+## Development Setup
+
+[![versionnode](https://img.shields.io/badge/nodejs->=6%20and%20<=_14-006cb8.svg?logo=node.js&color=3e863d)](http://nodejs.org/)
+
 ```bash
-# Clone the repository
-git clone: https://github.com/plug-ui/light-icons.git
+# Clone this repository
+[git clone https://github.com/lightvue/light-icons.git
 
+# From the project's root folder, install the dependencies
+npm install
 ```
 
-### Preparing your Fork
-- Click ‘Fork’ on Github, creating e.g. yourname/plugui.
+**Light-icons Docs:**
 
+```bash
+# Navigate to `docs/` (from the root)
+cd ./docs
 
-### Making your Changes
-Check todo list https://github.com/plug-ui/light-icons/projects/1. <br />
-Add changelog entry crediting yourself. <br />
-Write tests expecting the correct/fixed/new functionality. <br />
-Add new SVG file in the svg-light folder. <br />
-Commit your changes.
+# Install dependencies
+npm install
 
-### Creating Pull Requests
-Push your commit to get it back up to your fork: git push origin HEAD <br />
-Visit Github, click handy “Pull request” button that it will make upon noticing your new branch. <br />
-In the description field, write down issue number (if submitting code fixing an existing issue) or describe the issue + your fix (if submitting a wholly new bugfix). <br />
-Hit ‘submit’! And please be patient - the maintainers will get to you when they can. 
+# Serve docs with hot reload
+npm run dev
+```
+Visit <http://localhost:3000>  
+
+[Click here](https://join.slack.com/t/slack-qgs9925/shared_invite/zt-1g6falep2-9v3887ttNrjrcPdxi1if_A) to Join our slack community  
+
+## Connect with us:
+<a href = "https://join.slack.com/t/slack-qgs9925/shared_invite/zt-1g6falep2-9v3887ttNrjrcPdxi1if_A"><img height ="54px" width="54px" title="Slack" src="https://img.icons8.com/color/452/slack-new.png"/></a>
+<a href = "https://twitter.com/lightvue"><img height ="54px" width="54px" title="twitter" src="https://img.icons8.com/fluent/48/000000/twitter.png"/></a>
