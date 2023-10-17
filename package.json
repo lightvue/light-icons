@@ -1,7 +1,7 @@
 {
   "name": "light-icons",
-  "version": "1.0.10",
-  "description": "Handpicked collection of premium & lightwighted icons as font",
+  "version": "1.0.11",
+  "description": "Handpicked collection of premium & lightweight icons as font",
   "author": "Pulkit Aggarwal <pulkit.cloud@gmail.com>",
   "repository": {
     "type": "git",
@@ -43,8 +43,10 @@
   ],
   "devDependencies": {
     "loading-cli": "1.1.0",
-    "release-it": "12.6.3",
     "svgtofont": "2.1.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "release-it": "^15.11.0"
+  }
 }
