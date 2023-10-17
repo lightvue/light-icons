@@ -1,6 +1,6 @@
 # LIGHT icons
-Handpicked collection of premium & lightwighted icons as font
-
+Handpicked collection of premium & lightweight icons as font
+Check out documentation & icons demo on: [https://icons.lightvue.org](https://icons.lightvue.org 'Light Icons Demo')
 
 ## Installation
 
