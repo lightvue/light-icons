@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer__row">
       Licensed under MIT. (Yes it's free and
-      <a href="https://github.com/plug-ui/light-icons">open-sourced</a>)
+      <a href="https://github.com/lightvue/light-icons">open-sourced</a>)
     </div>
   </div>
 </template>
