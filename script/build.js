@@ -53,7 +53,7 @@ svgtofont({
     //   }
     // ],
     footerInfo: `
-      Licensed under MIT. (Yes it's free and <a href="https://github.com/plug-ui">open-sourced</a>)
+      Licensed under MIT. (Yes it's free and <a href="https://github.com/lightvue/light-icons">open-sourced</a>)
     `,
   },
 }).then(async () => {
@@ -65,7 +65,7 @@ svgtofont({
 async function modifyCSS() {
   const cssFilePath = path.join(distPath, `${fontName}.css`);
 
-  fs.readFile(cssFilePath, 'utf8', function (err,data) {
+  fs.readFile(cssFilePath, 'utf8', function (err, data) {
     if (err) {
       return console.log(err);
     }
